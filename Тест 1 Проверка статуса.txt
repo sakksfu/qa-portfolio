@@ -1,0 +1,22 @@
+// Тест 1: Проверка статуса
+pm.test("Статус ответа 200", function () {
+    pm.response.to.have.status(200);
+});
+
+// Тест 2: Проверка ID
+pm.test("ID пользователя равен 5", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.id).to.equal(5);
+});
+
+// Тест 3: Проверка имени
+pm.test("Имя пользователя не пустое", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.name).to.not.be.empty;
+});
+
+// Тест 4: Проверка email (бонус)
+pm.test("Email содержит @", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.email).to.include("@");
+});
